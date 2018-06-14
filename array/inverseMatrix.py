@@ -1,30 +1,43 @@
-from array import displayMatrix as Display
-from array import switch
+from array.displayMatrix import display
+from array.switchTri import switch_tri
+from array.makeMatrix import make_matrix
+from copy import deepcopy
+from array.switchE import switch_e
 
-N = int(input('请输入方阵的阶数：'))
-matrix = [[None] * N for row in range(N)]       # 声明N*N的数组arr并将所有元素设置为None
-Display.display(matrix)
-element = input('请输入方阵的元素(按行展开，以空格分开): ')
-ele_list = element.strip(' ').split(' ')
-length = len(ele_list)
 
-for i in range(N):      # 将输入变成int
-    for j in range(N):
-        index = i * N + j
-        if index < length:
-            try:
-                ele = float(ele_list[index])
-            except ValueError as e:
-                print('输入错误类型， 错误类型以0处理', e)
-                ele = 0
-        else:
-            ele = 0
-        matrix[i][j] = ele
-print('n阶方阵为：', matrix)
+def inverse_matrix():
+    matrix = make_matrix()
+    copy_matrix = deepcopy(matrix)
+    display(matrix)
+    M = len(matrix)
+    N = len(matrix[0])
+    if M != N:
+        print('请输入方阵。')
+        return []
+    result = switch_tri(copy_matrix)
+    if result != 0:     # result不等于0，则方阵可逆
+        n = 2 * N
+        ele_list = []
+        for i in range(M):
+            for j in range(n):
+                if j < M:
+                    ele_list.append(matrix[i][j])
+                else:
+                    if j - M == i:
+                        ele_list.append(1)
+                    else:
+                        ele_list.append(0)
+        ass_matrix = make_matrix(M, n, ele_list)
+        display(ass_matrix)
+        switch_e(ass_matrix)
+        display(ass_matrix)
+    else:
+        print('矩阵不可逆')
+        return []
 
-Display.display(matrix)
-switch.switch(matrix)
-print('/n')
-Display.display(matrix)
+
+inverse_matrix()
+
+
 
 

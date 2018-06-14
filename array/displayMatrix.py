@@ -4,5 +4,5 @@ def display(matrix):
     N = len(matrix[0])
     for i in range(M):
         for j in range(N):
-            print('%-5s' % (matrix[i][j]), ' ', end='')
+            print('%-5.2f' % (matrix[i][j]), ' ', end='')
         print('\n')
