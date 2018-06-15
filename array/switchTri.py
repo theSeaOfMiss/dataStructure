@@ -1,17 +1,8 @@
-from array.displayMatrix import display
 
 
-def calculate(matrix, sign=1):      # 计算上三角方阵部分的行列式值
-    M = len(matrix)
-    result = sign
-    for i in range(M):
-        result = result * matrix[i][i]
-    print('前%d行方阵计算结果为：' % M, result)
-    return result
-
-
-# 将M行*N列（M<=N）矩阵转换为前M*M为上三角矩阵（第二个参数默认情况）
-# 当输入第二参数不为'u'时，将M行*N列（M<=N）矩阵转换为前M*M为下三角矩阵
+# 将M行*N列（M<=N）矩阵转换为前M行*M列为上三角矩阵（第二个参数默认情况）
+# 当输入第二参数不为'u'时，将M行*N列（M<=N）矩阵转换为前M行*M列为下三角矩阵
+# 返回三角方阵部分的行列式值
 def switch_tri(matrix, option='u'):
     M = len(matrix)
     N = len(matrix[0])
@@ -42,8 +33,9 @@ def switch_tri(matrix, option='u'):
                     k = matrix[m][n] / matrix[n][n]
                     for j in range(N):
                         matrix[m][j] = matrix[m][j] - k * matrix[n][j]
-        result = calculate(matrix, sign)     # 计算上三角方阵部分的行列式值
-        display(matrix)
+        result = sign
+        for i in range(M):       # 计算三角方阵部分的行列式值
+            result = result * matrix[i][i]
         return result
     else:
         print('请输入行小于列的矩阵')
