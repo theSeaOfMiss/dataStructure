@@ -42,10 +42,3 @@ def inverse_matrix():
     else:
         print('矩阵不可逆')
         return []
-
-
-inverse_matrix()
-
-
-
-

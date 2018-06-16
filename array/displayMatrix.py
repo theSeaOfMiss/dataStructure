@@ -1,5 +1,6 @@
 # 在控制台显示矩阵
 def display(matrix):
+
     M = len(matrix)
     N = len(matrix[0])
     for i in range(M):
