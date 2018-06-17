@@ -6,14 +6,15 @@ from copy import deepcopy
 
 
 # 求矩阵的逆
-def inverse_matrix():
-    matrix = make_matrix()
+def inverse_matrix(matrix):
+    if not matrix:
+        matrix = make_matrix()
     copy_matrix = deepcopy(matrix)
-    display(matrix)
+    # display(matrix)
     M = len(matrix)
     N = len(matrix[0])
     if M != N:
-        print('请输入方阵。')
+        print('请输入n阶矩阵。')
         return []
     result = switch_tri(copy_matrix)
     if result != 0:     # result不等于0，则方阵可逆

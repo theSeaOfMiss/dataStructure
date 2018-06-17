@@ -1,4 +1,6 @@
 from array.makeMatrix import make_matrix
+from array.inverseMatrix import inverse_matrix
+from array.displayMatrix import display
 
 
 class Matrix:
@@ -32,4 +34,9 @@ class Matrix:
         else:
             pass
 
+    def inv_matrix(self):       # 求矩阵的逆矩阵
+        inv_matrix = inverse_matrix(self.matrix)
+        return inv_matrix
 
+    def display_matrix(self):       # 在控制台显示矩阵
+        display(self.matrix)
