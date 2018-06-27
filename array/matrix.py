@@ -1,6 +1,8 @@
 from array.makeMatrix import make_matrix
 from array.inverseMatrix import inverse_matrix
 from array.displayMatrix import display
+from array.switchTri import switch_tri
+from copy import deepcopy
 
 
 class Matrix:
@@ -35,8 +37,14 @@ class Matrix:
             pass
 
     def inv_matrix(self):       # 求矩阵的逆矩阵
-        inv_matrix = inverse_matrix(self.matrix)
+        ass_matrix = deepcopy(self.matrix)      # 辅助矩阵，为了不改变self.matrix
+        inv_matrix = inverse_matrix(ass_matrix)
         return inv_matrix
 
     def display_matrix(self):       # 在控制台显示矩阵
         display(self.matrix)
+
+    def switch_tri(self):       # 将矩阵化为三角矩阵
+        ass_matrix = deepcopy(self.matrix)
+        tri_matrix = switch_tri(ass_matrix)
+        return tri_matrix

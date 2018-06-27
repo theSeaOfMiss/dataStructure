@@ -1,4 +1,4 @@
-
+from array.displayMatrix import display
 
 # 将M行*N列（M<=N）矩阵转换为前M行*M列为上三角矩阵（第二个参数默认情况）
 # 当输入第二参数不为'u'时，将M行*N列（M<=N）矩阵转换为前M行*M列为下三角矩阵
@@ -36,6 +36,7 @@ def switch_tri(matrix, option='u'):
         result = sign
         for i in range(M):       # 计算三角方阵部分的行列式值
             result = result * matrix[i][i]
+        display(matrix)
         return result
     else:
         print('请输入行小于列的矩阵')
