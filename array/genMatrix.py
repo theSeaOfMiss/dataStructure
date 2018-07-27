@@ -22,7 +22,7 @@ def gen_matrix(M=0, N=0, ele_list=[]):      # 生成M行N列矩阵
         print('请输入大于零的行数或列数')
         return [[]]
 
-    matrix = [[None] * N for row in range(M)]       # 声明M*N的数组arr并将所有元素设置为0
+    matrix = [[None] * N for row in range(M)]       # 声明M*N的数组arr并将所有元素设置为None
 
     length = len(ele_list)
     if length == 0:
@@ -35,6 +35,8 @@ def gen_matrix(M=0, N=0, ele_list=[]):      # 生成M行N列矩阵
                     return [[]]
         return matrix
 
+    # 函数如果传入了第三个参数，则一一赋值给matrix，
+    # 如果不足，则用0补齐；如果多余，则舍弃
     for i in range(M):
         for j in range(N):
             index = i * N + j
