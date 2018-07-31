@@ -1,11 +1,8 @@
 # 将多项式储存在数组中。
 # 如P(x)=2x^5 + 3x^4 + 5x^2 + 4x + 1
-# A = [5, 2, 3, 0, 5, 4, 1]
+# A = [5, 2, 3, 0, 5, 4, 1]； A[0]表示最高次
 
 # 本例子将两个最高次方相等的多项式相加后输出结果
-
-
-ITEMS = 6
 
 
 def print_poly(poly):
@@ -23,14 +20,20 @@ def print_poly(poly):
 
 
 def poly_sum(poly1, poly2):
-    result = [None] * ITEMS
-    result[0] = poly1[0]
-    for i in range(1, poly1[0]+2):
-        result[i] = poly1[i]+poly2[i]         # 等幂次的系数相加
-    print_poly(result)
+    if poly1[0] > poly2[0]:
+        a = poly1[:]
+        b = poly2[:]
+    else:
+        a = poly2[:]
+        b = poly1[:]
+    diff = len(a) - len(b)
+    for i in range(1, len(b)):
+        a[diff + i] += b[i]
+    print_poly(a)
+    return a
 
 
-polyA = [4, 3, 7, 0, 6, 2]      # 声明多项式A
+polyA = [6, 8, 6, 3, 7, 0, 6, 2]      # 声明多项式A
 polyB = [4, 1, 5, 2, 0, 9] 	    # 声明多项式B
 print('多项式A=> ', end='')
 print_poly(polyA)	        # 打印出多项式A
