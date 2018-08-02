@@ -127,6 +127,7 @@ class LinkList:
         for i in range(self.length):
             if node == temp:
                 return True
+            temp = temp.next
         return False
 
     # 清空链表
@@ -145,14 +146,11 @@ link = LinkList()
 link.append(a)
 link.append(b)
 link.append(c)
-link.update(3, d)
-link.display('no')
-link.is_empty()
+# print(link.get_node_by_index(1))
+# link.insert(4, b)
+# link.update(1, c)
+# link.delete(2)
 link.clear()
-link.append(c)  # 3
-link.append(a)  # 1
-link.append(b)  # 2
-link.delete(2)
 link.display('no')
 link.is_empty()
 
