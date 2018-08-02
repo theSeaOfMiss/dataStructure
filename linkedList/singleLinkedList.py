@@ -18,6 +18,10 @@ class LinkList:
 
     # 向链表尾部添加节点
     def append(self, node):
+        if self.is_exist(node):
+            print('链表中已包含此数据，请勿重复添加')
+            return
+
         node.next = None
         if not self.head:
             self.head = node
@@ -56,8 +60,12 @@ class LinkList:
                 temp = temp.next
             return temp
 
-    # 在索引为index处插入一个节点,
+    # 在索引为index处插入一个节点
     def insert(self, index, node):
+        if self.is_exist(node):
+            print('链表中已包含此数据，请勿重复添加')
+            return
+
         if index > self.length or index <= 0:
             print('索引超出范围！')
         else:
@@ -74,7 +82,61 @@ class LinkList:
                 node.next = inter
             self.length += 1
 
+    # 删除索引处的节点
+    def delete(self, index):
+        if index > self.length or index <= 0:
+            print('索引超出范围！')
+        else:
+            temp = self.head
+            if index == 1:
+                inter = temp.next
+                self.head = inter
+            else:
+                for i in range(index - 2):
+                    temp = temp.next
+                inter = temp.next       # 将需要去掉的节点赋值给inter
+                temp.next = inter.next
+            self.length -= 1
+            print('成功删除节点%d' % index)
 
+    # 更新索引处的节点
+    def update(self, index, node):
+        if self.is_exist(node):
+            print('链表中已包含此数据，请勿重复添加')
+            return
+
+        if index > self.length or index <= 0:
+            print('索引超出范围！')
+        else:
+            temp = self.head
+            if index == 1:
+                inter = temp.next
+                self.head = node
+                node.next = inter
+            else:
+                for i in range(index - 2):
+                    temp = temp.next
+                inter = temp.next           # 将需要更新的节点赋值给inter
+                temp.next = node
+                node.next = inter.next
+            print('成功更新节点%d' % index)
+
+    # 判断节点是否在链表中存在, 如果存在返回True
+    def is_exist(self, node):
+        temp = self.head
+        for i in range(self.length):
+            if node == temp:
+                return True
+        return False
+
+    # 清空链表
+    def clear(self):
+        self.head = None
+        self.length = 0
+        print('已经清空链表！')
+
+
+print('')
 a = Student('xiaohu', '1', '90', '80')
 b = Student('xiaoming', '2', '70', '60')
 c = Student('panghu', '3', '60', '50')
@@ -83,9 +145,14 @@ link = LinkList()
 link.append(a)
 link.append(b)
 link.append(c)
-# link.display('no')
-link.insert(4, d)
-node1 = link.get_node_by_index(2)
-# print(node1.name)
-# link.is_empty()
+link.update(3, d)
 link.display('no')
+link.is_empty()
+link.clear()
+link.append(c)  # 3
+link.append(a)  # 1
+link.append(b)  # 2
+link.delete(2)
+link.display('no')
+link.is_empty()
+
