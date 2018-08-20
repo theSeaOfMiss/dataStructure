@@ -36,19 +36,27 @@ class LinkList:
     def display(self, attr):
         if self.length:
             temp = self.head
-            print(getattr(temp, attr))
+            try:
+                print(getattr(temp, attr))
+            except ValueError as e:
+                print('发生错误：', e)
             while temp.next:
                 temp = temp.next
-                print(getattr(temp, attr))
+                try:
+                    print(getattr(temp, attr))
+                except ValueError as e:
+                    print('发生错误：', e)
         else:
             print('链表中还没有节点！')
 
-    # 判断是否为空,若不为空，则显示链表中有多少节点
+    # 判断是否为空,若不为空，则在控制台显示链表中有多少节点
     def is_empty(self):
         if self.length:
             print('节点数为：', self.length)
+            return False
         else:
             print('此链表为空链表！')
+            return True
 
     # 通过索引获得相应节点，head的索引为1
     def get_node_by_index(self, index):
@@ -136,21 +144,7 @@ class LinkList:
         self.length = 0
         print('已经清空链表！')
 
-
-print('')
-a = Student('xiaohu', '1', '90', '80')
-b = Student('xiaoming', '2', '70', '60')
-c = Student('panghu', '3', '60', '50')
-d = Student('afu', '4', '30', '60')
-link = LinkList()
-link.append(a)
-link.append(b)
-link.append(c)
-# print(link.get_node_by_index(1))
-# link.insert(4, b)
-# link.update(1, c)
-# link.delete(2)
-link.clear()
-link.display('no')
-link.is_empty()
+    # 返回链表长度
+    def get_length(self):
+        return self.length
 

@@ -1,7 +1,7 @@
 # 通过list实现堆栈功能
 
 
-class Stack():
+class Stack:
     def __init__(self):
         self.__items = []
 
