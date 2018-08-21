@@ -3,29 +3,29 @@
 
 class Queue:
     def __init__(self):
-        self.items = []
+        self.__items = []
 
     # 判断队列是否为空，如果为空，返回True
     def is_empty(self):
-        return self.items == []
+        return self.__items == []
 
     # 将新数据加入队列的末尾
     def enqueue(self, item):
-        self.items.append(item)
+        self.__items.append(item)
 
     # 删除队列前端的数据
     def dequeue(self):
         if self.is_empty():
             print('队列为空队列')
         else:
-            value = self.items[0]
-            self.items.remove(value)
+            value = self.__items[0]
+            self.__items.remove(value)
 
     def peek(self):
         if self.is_empty():
             print('队列为空队列')
         else:
-            return self.items[0]
+            return self.__items[0]
             
     def size(self):
-        return len(self.items)
+        return len(self.__items)
