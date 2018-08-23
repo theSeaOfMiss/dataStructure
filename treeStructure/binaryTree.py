@@ -20,7 +20,22 @@ class Tree:
     def __init__(self):
         self.__root = None
 
+    def is_exist(self, data):
+        ptr = self.__root
+        while True:
+            if ptr is None:
+                return False
+            if ptr.data == data:
+                return True
+            elif ptr.data > data:
+                ptr = ptr.left
+            else:
+                ptr = ptr.right
+
     def add(self, node):
+        if self.is_exist(node.data):
+            print('二叉树中已有此节点')
+            return
         if self.__root is None:
             self.__root = node
         else:
