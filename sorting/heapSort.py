@@ -32,5 +32,5 @@ def heap_sort(lists):
     for i in range(0, size)[::-1]:
         lists[0], lists[i] = lists[i], lists[0]
         adjust_heap(lists, 0, i)
-        print('dd', lists)
+        # print('dd', lists)
     return lists

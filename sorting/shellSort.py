@@ -16,6 +16,7 @@ def shell(data):
                 data[j + jmp] = data[j]
                 j = j - jmp
             data[jmp + j] = tmp
-        print('第%d次排序后的结果是：' % k, data)
+        # print('第%d次排序后的结果是：' % k, data)
         k += 1
         jmp = jmp // 2
+    return data

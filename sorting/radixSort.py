@@ -5,24 +5,24 @@
 import math
 
 
-def radix_sort(lists, radix=10):
-    size = len(lists)
-    val = max(lists)        # lists中的最大值
+def radix_sort(data, radix=10):
+    size = len(data)
+    val = max(data)        # data中的最大值
     k = int(math.ceil(math.log(val, radix)))    # 循环数
 
     for i in range(k):
         bucket = [[] for row in range(radix)]
         for j in range(size):
-            m = (lists[j] // (radix**i)) % 10      # m为相应位数的值，如36取十位数3
-            bucket[m].append(lists[j])
+            m = (data[j] // (radix**i)) % 10      # m为相应位数的值，如36取十位数3
+            bucket[m].append(data[j])
 
-        lists = []
+        del data[:]
         for l in bucket:
-            lists += l
+            data += l
 
     if val % radix == 0:
-        count = lists.count(val)
+        count = data.count(val)
         for i in range(count):
-            lists.remove(val)
-            lists.append(val)
-    return lists
+            data.remove(val)
+            data.append(val)
+    return data

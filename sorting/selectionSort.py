@@ -10,4 +10,5 @@ def select(data):
         for j in range(i+1, length):
             if data[i] > data[j]:
                 data[i], data[j] = data[j], data[i]
-        print('第%d次排序后的结果是：' % (i+1), data)
+        # print('第%d次排序后的结果是：' % (i+1), data)
+    return data

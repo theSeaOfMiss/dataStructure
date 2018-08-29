@@ -14,6 +14,6 @@ def bubble(data):
                 flag = 0
         if flag:
             break
-        print('第%d次排序后的结果是：' % (length - i + 1), data)
-    print('最终结果为：', data)
+        # print('第%d次排序后的结果是：' % (length - i + 1), data)
+    # print('最终结果为：', data)
     return data
